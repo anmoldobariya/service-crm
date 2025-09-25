@@ -1,3 +1,4 @@
+import AttendanceDetailsModal from "@/components/AttendanceDetailsModal";
 import Header from "@/components/layout/Header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -25,6 +26,11 @@ export default function AttendancePage() {
   const now = new Date();
   const [month, setMonth] = useState(now.getMonth() + 1);
   const [year, setYear] = useState(now.getFullYear());
+
+  // Modal state
+  const [showAttendanceDetails, setShowAttendanceDetails] = useState(false);
+  const [selectedEmployee, setSelectedEmployee] = useState<AttendanceData | null>(null);
+  const [selectedDay, setSelectedDay] = useState<number | null>(null);
 
   // Fetch attendance data
   const { data, isFetching } = useGetAttendanceQuery({ month, year });
@@ -180,9 +186,14 @@ export default function AttendancePage() {
                           <TableCell
                             key={day}
                             className={cn(
-                              "text-center p-2",
+                              "text-center p-2 cursor-pointer hover:bg-muted/20 transition-colors",
                               isWeekend && "bg-muted/10"
                             )}
+                            onClick={() => {
+                              setSelectedEmployee(employee);
+                              setSelectedDay(day);
+                              setShowAttendanceDetails(true);
+                            }}
                           >
                             {dayAttendance ? (
                               <div className="flex flex-col items-center gap-1">
@@ -234,6 +245,19 @@ export default function AttendancePage() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Attendance Details Modal */}
+      <AttendanceDetailsModal
+        isOpen={showAttendanceDetails}
+        onClose={() => {
+          setShowAttendanceDetails(false);
+          setSelectedEmployee(null);
+          setSelectedDay(null);
+        }}
+        employee={selectedEmployee}
+        selectedDay={selectedDay}
+        selectedDate={selectedDay ? `${selectedDay.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${year}` : ''}
+      />
     </div>
   );
 }
