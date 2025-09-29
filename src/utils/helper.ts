@@ -1,9 +1,9 @@
+import type { Company } from '@/store/api/company';
 import type { RootState } from '@/store/store';
 import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import moment from 'moment';
 import { toast } from 'sonner';
 import { DATE_FORMATE } from './constant';
-import type { Company } from '@/store/api/companyApi';
 
 export const createBaseQuery = (baseUrl: string) => {
   return fetchBaseQuery({

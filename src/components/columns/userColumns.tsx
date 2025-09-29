@@ -1,4 +1,4 @@
-import type { User } from "@/store/api/authApi";
+import type { User } from "@/store/api/auth";
 import type { ColumnDef } from "@tanstack/react-table";
 import { getCommonColumns } from "./commonColumns";
 

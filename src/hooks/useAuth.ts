@@ -5,7 +5,7 @@ import {
   useGetCurrentUserQuery,
   useLoginMutation,
   type LoginRequest
-} from '../store/api/authApi';
+} from '../store/api/auth';
 import {
   logout as logoutAction,
   setCredentials,

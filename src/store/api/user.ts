@@ -1,6 +1,6 @@
 import { createBaseQuery } from '@/utils/helper';
 import { createApi } from '@reduxjs/toolkit/query/react';
-import type { User } from './authApi';
+import type { User } from './auth';
 
 export interface UserListRequest {
   page?: number;

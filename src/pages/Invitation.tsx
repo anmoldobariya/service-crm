@@ -4,7 +4,7 @@ import { DataTable } from "@/components/DataTable";
 import Header from "@/components/layout/Header";
 import Navigation from "@/components/Navigation";
 import { useDataTable } from "@/hooks/use-data-table";
-import { useInvitationListQuery, type Invitation } from "@/store/api/invitationApi";
+import { useInvitationListQuery, type Invitation } from "@/store/api/invitation";
 import { SendToBack } from "lucide-react";
 import { useMemo, useState } from "react";
 

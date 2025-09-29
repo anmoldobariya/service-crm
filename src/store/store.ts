@@ -1,23 +1,26 @@
 import { errorHandlerMiddleware } from '@/middleware/errorHandler';
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { amcApi } from './api/amcApi';
-import { amcReportApi } from './api/amcReportApi';
-import { areaApi } from './api/areaApi';
-import { authApi } from './api/authApi';
-import { companyApi } from './api/companyApi';
-import { inquiryApi } from './api/inquiryApi';
-import { invitationApi } from './api/invitationApi';
-import { serviceApi } from './api/serviceApi';
-import { userApi } from './api/userApi';
+import { amcApi } from './api/amc';
+import { amcReportApi } from './api/amcReport';
+import { areaApi } from './api/area';
+import { attendanceApi } from './api/attendance';
+import { authApi } from './api/auth';
+import { companyApi } from './api/company';
+import { inquiryApi } from './api/inquiry';
+import { installationApi } from './api/installation';
+import { invitationApi } from './api/invitation';
+import { serviceApi } from './api/service';
+import { userApi } from './api/user';
 import authSlice from './slices/authSlice';
 import resourceSlice from './slices/resourceSlice';
-import { installationApi } from './api/installationApi';
-import { attendanceApi } from './api/attendanceApi';
+import refetchSlice from './slices/refetchSlice';
+import { issueApi } from './api/issue';
 
 const rootReducer = {
   auth: authSlice,
   resource: resourceSlice,
+  refetch: refetchSlice,
   [authApi.reducerPath]: authApi.reducer,
   [serviceApi.reducerPath]: serviceApi.reducer,
   [areaApi.reducerPath]: areaApi.reducer,
@@ -29,6 +32,7 @@ const rootReducer = {
   [amcReportApi.reducerPath]: amcReportApi.reducer,
   [installationApi.reducerPath]: installationApi.reducer,
   [attendanceApi.reducerPath]: attendanceApi.reducer,
+  [issueApi.reducerPath]: issueApi.reducer
 };
 
 export const store = configureStore({
@@ -46,7 +50,8 @@ export const store = configureStore({
         inquiryApi.middleware,
         amcReportApi.middleware,
         installationApi.middleware,
-        attendanceApi.middleware
+        attendanceApi.middleware,
+        issueApi.middleware
       )
       .concat(errorHandlerMiddleware)
 });

@@ -4,6 +4,7 @@ import { createApi } from '@reduxjs/toolkit/query/react';
 export interface Service {
   _id: string;
   cid: {
+    _id?: string;
     code?: string;
     name?: string;
     link?: string;
@@ -11,6 +12,8 @@ export interface Service {
   issue: string;
   machine: string;
   services?: {
+    _id?: string;
+    issue?: string;
     machine_no?: string;
     remark?: string;
   }[];
@@ -23,6 +26,7 @@ export interface Service {
   };
   convertedDate: string;
   assigned_to?: {
+    _id?: string;
     name?: string;
   };
   phone_no?: string;
@@ -44,20 +48,25 @@ export interface ServiceListResponse {
 }
 
 export interface CreateServiceRequest {
-  name: string;
-  description?: string;
-  price?: number;
-  category?: string;
+  cid: string;
+  machine: string;
+  issue: string;
+  issued_on: string;
   status?: string;
+  assigned_to?: string;
+  services?: {
+    machine_no?: string;
+    remark?: string;
+  }[];
 }
 
 export interface UpdateServiceRequest {
   _id: string;
-  body: Partial<Service>;
+  body: Partial<CreateServiceRequest>;
 }
 
 export interface DeleteServiceRequest {
-  _id: string;
+  ids: string[];
 }
 
 export const serviceApi = createApi({

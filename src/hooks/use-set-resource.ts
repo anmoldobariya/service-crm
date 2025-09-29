@@ -1,11 +1,13 @@
-import { useGetAreaListQuery } from '@/store/api/areaApi';
-import { useCompanyListQuery } from '@/store/api/companyApi';
-import { useGetUserListQuery } from '@/store/api/userApi';
+import { useGetAreaListQuery } from '@/store/api/area';
+import { useCompanyListQuery } from '@/store/api/company';
+import { useGetIssuesListsQuery } from '@/store/api/issue';
+import { useGetUserListQuery } from '@/store/api/user';
 import {
   setAreaLoading,
   setAreaOptions,
   setAreas,
   setCompanyOptions,
+  setIssuesOptions,
   setUserLoading,
   setUserOptions,
   setUsers
@@ -29,6 +31,7 @@ export function useSetResource() {
     { skip: !user }
   );
   const { data: companyList } = useCompanyListQuery({}, { skip: !user });
+  const { data: issues } = useGetIssuesListsQuery(null, { skip: !user });
 
   useEffect(() => {
     dispatch(setAreaLoading(AreaFetching));
@@ -58,4 +61,12 @@ export function useSetResource() {
     }));
     dispatch(setCompanyOptions(companyOptions));
   }, [companyList]);
+
+  useEffect(() => {
+    const issuesOptions = (issues?.result || []).map((issue) => ({
+      label: issue.issue,
+      value: issue._id
+    }));
+    dispatch(setIssuesOptions(issuesOptions));
+  }, [issues]);
 }

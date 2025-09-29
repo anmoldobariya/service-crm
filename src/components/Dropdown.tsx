@@ -33,6 +33,7 @@ export interface DropdownProps {
   maxSelectedDisplay?: number;
   emptyMessage?: string;
   noResultsMessage?: string;
+  error?: boolean;
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({
@@ -56,6 +57,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   maxSelectedDisplay = 2,
   emptyMessage = 'No options available',
   noResultsMessage = 'No results found',
+  error = false,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -144,7 +146,8 @@ export const Dropdown: React.FC<DropdownProps> = ({
         className={cn(
           'justify-between font-normal w-full',
           sizeClasses[size],
-          triggerClassName
+          triggerClassName,
+          error && 'border-destructive focus:ring-destructive'
         )}
         onClick={(e) => {
           // Check if the clear icon area was clicked

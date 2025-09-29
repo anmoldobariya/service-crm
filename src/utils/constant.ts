@@ -13,10 +13,10 @@ export const SERVICE_STATUS = {
 };
 
 export const SERVICE_STATUS_OPTIONS = [
-  { label: 'Pending', value: SERVICE_STATUS.PENDING },
-  { label: 'In Progress', value: SERVICE_STATUS.IN_PROCESS },
-  { label: 'Closed', value: SERVICE_STATUS.CLOSED },
-  { label: 'Blocked', value: SERVICE_STATUS.BLOCKED }
+  { label: 'Pending', value: 'pending' },
+  { label: 'In Process', value: 'in process' },
+  { label: 'Closed', value: 'closed' },
+  { label: 'Blocked', value: 'blocked' }
 ];
 
 export const INQUIRY_STATUS = {

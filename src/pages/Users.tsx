@@ -4,7 +4,7 @@ import { DataTable } from "@/components/DataTable";
 import Header from "@/components/layout/Header";
 import { SearchBox } from "@/components/SearchBox";
 import { useDataTable } from "@/hooks/use-data-table";
-import type { User } from "@/store/api/authApi";
+import type { User } from "@/store/api/auth";
 import type { RootState } from "@/store/store";
 import { useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";

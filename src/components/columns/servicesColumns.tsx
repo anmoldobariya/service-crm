@@ -1,12 +1,12 @@
-import type { Service } from "@/store/api/serviceApi";
+import { cn } from "@/lib/utils";
+import type { Service } from "@/store/api/service";
+import { DATE_FORMATE } from "@/utils/constant";
+import { formatDate, handleStatusesBadge } from "@/utils/helper";
 import type { ColumnDef } from "@tanstack/react-table";
 import { ExternalLink } from "lucide-react";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
-import { formatDate, handleStatusesBadge } from "@/utils/helper";
-import { DATE_FORMATE } from "@/utils/constant";
 import moment from "moment";
 import { Badge } from "../ui/badge";
-import { cn } from "@/lib/utils";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
 import { getCommonColumns } from "./commonColumns";
 
 const COMMON_COLUMNS = getCommonColumns<Service>();

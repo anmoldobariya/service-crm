@@ -4,7 +4,7 @@ import { DataTable } from "@/components/DataTable";
 import Header from "@/components/layout/Header";
 import { SearchBox } from "@/components/SearchBox";
 import { useDataTable } from "@/hooks/use-data-table";
-import { useInstallationListQuery } from "@/store/api/installationApi";
+import { useInstallationListQuery } from "@/store/api/installation";
 import { useMemo, useState } from "react";
 
 export default function InstallationPage() {

@@ -5,7 +5,7 @@ import Dropdown from "@/components/Dropdown";
 import Header from "@/components/layout/Header";
 import { SearchBox } from "@/components/SearchBox";
 import { useDataTable } from "@/hooks/use-data-table";
-import { useLazyCompanyListQuery, type Company } from "@/store/api/companyApi";
+import { useLazyCompanyListQuery, type Company } from "@/store/api/company";
 import type { RootState } from "@/store/store";
 import { PAGINATION_LIMIT } from "@/utils/constant";
 import { useEffect, useMemo, useState } from "react";
@@ -25,7 +25,7 @@ export default function CompanyPage() {
   const [abortController, setAbortController] = useState<AbortController | null>(null);
   const [getCompanyList, { isLoading: isLoadingList }] = useLazyCompanyListQuery();
 
-  const { areaOptions: AREA_OPTIONS, userOptioins: USER_OPTIONS } = useSelector((state: RootState) => state.resource);
+  const { areaOptions: AREA_OPTIONS, userOptions: USER_OPTIONS } = useSelector((state: RootState) => state.resource);
 
   useEffect(() => {
     setPage(1);

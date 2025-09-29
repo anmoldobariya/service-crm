@@ -1,4 +1,4 @@
-import type { Company } from "@/store/api/companyApi";
+import type { Company } from "@/store/api/company";
 import { handleDays, handleIssueDate } from "@/utils/helper";
 import type { ColumnDef } from "@tanstack/react-table";
 import { getCommonColumns } from "./commonColumns";

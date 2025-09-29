@@ -1,11 +1,6 @@
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import * as z from 'zod'
-import { useState, useEffect } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { LoginFormFields } from '@/components/formFields/login'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
 import {
 	Form,
 	FormControl,
@@ -14,10 +9,16 @@ import {
 	FormLabel,
 	FormMessage,
 } from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
 import { useAuth } from '@/hooks/useAuth'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { useLocation, useNavigate } from 'react-router-dom'
+import * as z from 'zod'
 
 const loginSchema = z.object({
-	email: z.string().email('Please enter a valid email address'),
+	email: z.email('Please enter a valid email address'),
 	password: z.string().min(6, 'Password must be at least 6 characters'),
 })
 
@@ -82,40 +83,26 @@ export default function LoginPage() {
 						<CardContent>
 							<Form {...form}>
 								<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-[300px]">
-									<FormField
-										control={form.control}
-										name="email"
-										render={({ field }) => (
-											<FormItem>
-												<FormLabel>Email</FormLabel>
-												<FormControl>
-													<Input
-														type="email"
-														placeholder="Enter your email"
-														{...field}
-													/>
-												</FormControl>
-												<FormMessage />
-											</FormItem>
-										)}
-									/>
-									<FormField
-										control={form.control}
-										name="password"
-										render={({ field }) => (
-											<FormItem>
-												<FormLabel>Password</FormLabel>
-												<FormControl>
-													<Input
-														type="password"
-														placeholder="Enter your password"
-														{...field}
-													/>
-												</FormControl>
-												<FormMessage />
-											</FormItem>
-										)}
-									/>
+									{LoginFormFields.map(formField => (
+										<FormField
+											control={form.control}
+											name={formField.name}
+											key={formField.name}
+											render={({ field }) => (
+												<FormItem>
+													<FormLabel>{formField.label}</FormLabel>
+													<FormControl>
+														<Input
+															type={formField.type}
+															placeholder={formField.placeholder}
+															{...field}
+														/>
+													</FormControl>
+													<FormMessage />
+												</FormItem>
+											)}
+										/>
+									))}
 									{error && (
 										<div className="text-sm text-red-600 mt-2">
 											{error}
@@ -123,7 +110,7 @@ export default function LoginPage() {
 									)}
 									<Button
 										type="submit"
-										className="w-full bg-[#1e3a8a] p-6 text-md"
+										className="w-full p-6 text-md"
 										disabled={isLoggingIn}
 										size="lg"
 									>

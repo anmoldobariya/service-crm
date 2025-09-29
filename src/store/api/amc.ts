@@ -1,6 +1,6 @@
 import { createBaseQuery } from '@/utils/helper';
 import { createApi } from '@reduxjs/toolkit/query/react';
-import type { Company } from './companyApi';
+import type { Company } from './company';
 
 export interface AmcListRequest {
   page?: number;

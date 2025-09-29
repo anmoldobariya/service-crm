@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { type AttendanceData } from "@/store/api/attendanceApi";
+import { type AttendanceData } from "@/store/api/attendance";
 import {
   Calendar,
   Clock,
@@ -301,13 +301,10 @@ export default function AttendanceDetailsModal({
   return (
     <>
       <Dialog open={isOpen} onOpenChange={onClose}>
-        <DialogContent className="sm:max-w-2xl max-h-[80vh] overflow-y-auto">
+        <DialogContent className="sm:max-w-3xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="flex items-center justify-between">
               <span>Attendance Details</span>
-              <Button variant="ghost" size="sm" onClick={onClose}>
-                <X className="h-4 w-4" />
-              </Button>
             </DialogTitle>
           </DialogHeader>
 
@@ -351,10 +348,7 @@ export default function AttendanceDetailsModal({
                         isOvertimeApproved === null && "bg-gray-100 text-gray-800 border-gray-200"
                       )}
                     >
-                      + {overTimeDuration}.00 hrs OT{' '}
-                      {isOvertimeApproved === true ? 'Overtime Approved' :
-                        isOvertimeApproved === false ? 'Overtime Rejected' :
-                          'Overtime Pending'}
+                      + {overTimeDuration} hrs OT{' '}
                     </Badge>
                   )}
                 </div>
@@ -371,13 +365,12 @@ export default function AttendanceDetailsModal({
                 className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700"
               >
                 <Plus className="h-4 w-4" />
-                Add Session
               </Button>
             </div>
 
             {sessions.length === 0 ? (
               <Card>
-                <CardContent className="p-6 text-center">
+                <CardContent className="py-0 px-3 text-center">
                   <div className="text-muted-foreground">
                     No sessions recorded for this day
                   </div>
@@ -393,7 +386,7 @@ export default function AttendanceDetailsModal({
               <div className="space-y-3">
                 {sessions.map((session) => (
                   <Card key={session._id} className="border border-border">
-                    <CardContent className="p-4">
+                    <CardContent className="py-0 px-3">
                       <div className="flex items-start justify-between">
                         <div className="space-y-2 flex-1">
                           <div className="flex items-center gap-2">

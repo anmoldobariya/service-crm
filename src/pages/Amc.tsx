@@ -3,8 +3,8 @@ import { DataTable } from "@/components/DataTable";
 import Header from "@/components/layout/Header";
 import { SearchBox } from "@/components/SearchBox";
 import { useDataTable } from "@/hooks/use-data-table";
-import { useGetAMCListsQuery } from "@/store/api/amcApi";
-import type { Company } from "@/store/api/companyApi";
+import { useGetAMCListsQuery } from "@/store/api/amc";
+import type { Company } from "@/store/api/company";
 import { Pencil } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 

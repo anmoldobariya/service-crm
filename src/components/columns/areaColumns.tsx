@@ -1,4 +1,4 @@
-import type { Area } from "@/store/api/areaApi";
+import type { Area } from "@/store/api/area";
 import type { ColumnDef } from "@tanstack/react-table";
 import { getCommonColumns } from "./commonColumns";
 

@@ -1,4 +1,4 @@
-import type { FollowUp, Inquiry } from "@/store/api/inquiryApi";
+import type { FollowUp, Inquiry } from "@/store/api/inquiry";
 import { DATE_FORMATE } from "@/utils/constant";
 import { formatDate } from "@/utils/helper";
 import type { ColumnDef } from "@tanstack/react-table";

@@ -1,8 +1,8 @@
-import type { Invitation } from "@/store/api/invitationApi";
+import type { Invitation } from "@/store/api/invitation";
+import { DATE_FORMATE } from "@/utils/constant";
+import { formatDate } from "@/utils/helper";
 import type { ColumnDef } from "@tanstack/react-table";
 import { getCommonColumns } from "./commonColumns";
-import { formatDate } from "@/utils/helper";
-import { DATE_FORMATE } from "@/utils/constant";
 
 const COMMON_COLUMNS = getCommonColumns<Invitation>();
 

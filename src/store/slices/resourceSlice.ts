@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { Area } from '../api/areaApi';
-import type { User } from '../api/authApi';
+import type { Area } from '../api/area';
+import type { User } from '../api/auth';
 
 interface Option {
   label: string;
@@ -12,8 +12,9 @@ interface ResourceState {
   areaLoading: boolean;
   userLoading: boolean;
   areaOptions: Option[];
-  userOptioins: Option[];
+  userOptions: Option[];
   companyOptions: Option[];
+  issuesOptions: Option[];
 }
 
 const resourceInitialState: ResourceState = {
@@ -22,8 +23,9 @@ const resourceInitialState: ResourceState = {
   areaLoading: false,
   userLoading: false,
   areaOptions: [],
-  userOptioins: [],
-  companyOptions: []
+  userOptions: [],
+  companyOptions: [],
+  issuesOptions: []
 };
 
 const resourceSlice = createSlice({
@@ -56,10 +58,13 @@ const resourceSlice = createSlice({
       state.areaOptions = action.payload;
     },
     setUserOptions: (state, action: { payload: Option[] }) => {
-      state.userOptioins = action.payload;
+      state.userOptions = action.payload;
     },
     setCompanyOptions: (state, action: { payload: Option[] }) => {
       state.companyOptions = action.payload;
+    },
+    setIssuesOptions: (state, action: { payload: Option[] }) => {
+      state.issuesOptions = action.payload;
     }
   }
 });
@@ -71,6 +76,7 @@ export const {
   setUserLoading,
   setAreaOptions,
   setCompanyOptions,
-  setUserOptions
+  setUserOptions,
+  setIssuesOptions
 } = resourceSlice.actions;
 export default resourceSlice.reducer;

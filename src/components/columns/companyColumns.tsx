@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import type { Company } from "@/store/api/companyApi";
+import type { Company } from "@/store/api/company";
 import { DATE_FORMATE } from "@/utils/constant";
 import type { ColumnDef } from "@tanstack/react-table";
 import moment from "moment";

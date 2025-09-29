@@ -1,11 +1,11 @@
-import AttendanceDetailsModal from "@/components/AttendanceDetailsModal";
+import AttendanceDetailsModal from "@/components/Modals/AttendanceDetailsModal";
 import Header from "@/components/layout/Header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
-import { useGetAttendanceQuery, type AttendanceData } from "@/store/api/attendanceApi";
+import { useGetAttendanceQuery, type AttendanceData } from "@/store/api/attendance";
 import { Calendar, ChevronLeft, ChevronRight, Clock, User } from "lucide-react";
 import { useMemo, useState } from "react";
 
@@ -73,10 +73,16 @@ export default function AttendancePage() {
     }
   };
 
-  const monthName = new Date(year, month - 1, 1).toLocaleDateString('en-US', { month: 'long' });
-  const attendanceData = data?.result?.data || [];
-  const totalEmployees = attendanceData.length;
-  const totalHours = data?.result?.total_duration || 0;
+  const monthName = useMemo(
+    () => new Date(year, month - 1, 1).toLocaleDateString('en-US', { month: 'long' }),
+    [month, year]
+  );
+
+  const { attendanceData, totalEmployees, totalHours } = useMemo(() => ({
+    attendanceData: data?.result?.data || [],
+    totalEmployees: data?.result?.data?.length || 0,
+    totalHours: data?.result?.total_duration || 0
+  }), [data?.result])
 
   return (
     <div className="h-full w-full p-4 flex flex-col gap-4">
@@ -96,7 +102,7 @@ export default function AttendancePage() {
 
       {/* Month Navigation */}
       <Card>
-        <CardContent className="p-4">
+        <CardContent className="px-4 py-0">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Calendar className="h-5 w-5 text-muted-foreground" />

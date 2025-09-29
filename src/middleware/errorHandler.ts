@@ -1,6 +1,6 @@
-import type { Middleware } from '@reduxjs/toolkit';
 import { logout } from '@/store/slices/authSlice';
 import { errorToast } from '@/utils/helper';
+import type { Middleware } from '@reduxjs/toolkit';
 
 export const errorHandlerMiddleware: Middleware =
   (storeAPI) => (next) => (action: any) => {

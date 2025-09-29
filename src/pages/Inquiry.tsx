@@ -5,7 +5,7 @@ import Dropdown from "@/components/Dropdown";
 import Header from "@/components/layout/Header";
 import { SearchBox } from "@/components/SearchBox";
 import { useDataTable } from "@/hooks/use-data-table";
-import { useGetInquiryListQuery, type Inquiry } from "@/store/api/inquiryApi";
+import { useGetInquiryListQuery, type Inquiry } from "@/store/api/inquiry";
 import { INQUIRY_STATUS, INQUIRY_STATUS_OPTIONS } from "@/utils/constant";
 import { useEffect, useMemo, useState } from "react";
 

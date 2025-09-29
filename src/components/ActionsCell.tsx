@@ -39,7 +39,7 @@ interface ActionItemProps {
 
 export function ActionItem({ icon, onClick, children }: ActionItemProps) {
   return (
-    <DropdownMenuItem onClick={onClick} className="flex items-center gap-4">
+    <DropdownMenuItem onClick={onClick} className="flex items-center gap-4 cursor-pointer">
       {icon}
       {children}
     </DropdownMenuItem>

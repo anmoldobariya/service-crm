@@ -28,7 +28,7 @@ const sizeClasses = {
   md: 'max-w-md',
   lg: 'max-w-lg',
   xl: 'max-w-4xl',
-  full: 'max-w-[95vw] max-h-[95vh]',
+  full: 'max-w-[95vw] max-h-[98vh]',
 };
 
 export const Modal: React.FC<ModalProps> = ({
@@ -149,6 +149,7 @@ export interface FormModalProps {
   submitDisabled?: boolean;
   loading?: boolean;
   size?: ModalProps['size'];
+  maximizable?: boolean;
 }
 
 export const FormModal: React.FC<FormModalProps> = ({
@@ -162,6 +163,7 @@ export const FormModal: React.FC<FormModalProps> = ({
   submitDisabled = false,
   loading = false,
   size = 'md',
+  maximizable = false,
 }) => {
   return (
     <Modal
@@ -170,6 +172,7 @@ export const FormModal: React.FC<FormModalProps> = ({
       title={title}
       size={size}
       scrollable={true}
+      maximizable={maximizable}
       footer={
         <div className="flex justify-end space-x-2">
           <Button variant="outline" onClick={onClose} disabled={loading}>
@@ -177,6 +180,7 @@ export const FormModal: React.FC<FormModalProps> = ({
           </Button>
           <Button
             onClick={onSubmit}
+            type='button'
             disabled={submitDisabled || loading}
           >
             {submitText}

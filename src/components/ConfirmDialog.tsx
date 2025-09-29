@@ -44,7 +44,7 @@ export function ConfirmDialog({
           </DialogClose>
           <DialogClose asChild>
             <Button
-              variant={variant === "destructive" ? "destructive" : "default"}
+              variant={variant}
               onClick={onConfirm}
             >
               {confirmText}
