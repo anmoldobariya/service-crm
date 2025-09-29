@@ -16,8 +16,7 @@ import {
   Edit,
   Plus,
   Trash2,
-  User,
-  X,
+  User
 } from "lucide-react";
 import { useState } from "react";
 
